@@ -41,4 +41,14 @@ public class StudentServiceImpl implements StudentService {
         StudentDto map = modelMapper.map(save, StudentDto.class);
         return map;
     }
+
+    @Override
+    public StudentDto updateStudent(Long id, AddNewStudentDto studentDto) {
+        Student student = studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Student not found with given id"));
+        modelMapper.map(studentDto,student);
+        studentRepository.save(student);
+        return modelMapper.map(student, StudentDto.class);
+    }
+
+
 }

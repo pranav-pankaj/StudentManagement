@@ -2,6 +2,7 @@ package com.studentManagement.StudentManagement.Controller;
 
 import com.studentManagement.StudentManagement.Dto.AddNewStudentDto;
 import com.studentManagement.StudentManagement.Dto.StudentDto;
+import com.studentManagement.StudentManagement.Models.Student;
 import com.studentManagement.StudentManagement.Service.Impl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,5 +32,9 @@ public class StudentController {
     @PostMapping("/createStudent")
     public ResponseEntity<StudentDto> saveStudent(@RequestBody AddNewStudentDto addNewStudent){
        return ResponseEntity.status(HttpStatus.CREATED).body(studentService.saveStudent(addNewStudent));
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<StudentDto> updateStudent(@PathVariable Long id, @RequestBody AddNewStudentDto studentDto){
+        return ResponseEntity.status(HttpStatus.OK).body(studentService.updateStudent(id,studentDto));
     }
 }

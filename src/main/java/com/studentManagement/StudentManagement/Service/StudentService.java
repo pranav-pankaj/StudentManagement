@@ -10,4 +10,6 @@ public interface StudentService {
     StudentDto getStudentById(Long id);
 
     StudentDto saveStudent(AddNewStudentDto addNewStudent);
+
+    StudentDto updateStudent(Long id, AddNewStudentDto studentDto);
 }
